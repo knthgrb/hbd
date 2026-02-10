@@ -1,24 +1,48 @@
 .creator-page {
-  min-height: 100%;
+  height: 100%;
+  min-height: 0;
   padding: 1.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  align-items: start;
+  align-items: center;
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
-.creator-page .app-footer {
-  grid-column: 1 / -1;
+.creator-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.creator-right .app-footer {
+  margin-top: 0.75rem;
+  text-align: center;
 }
 
 @media (max-width: 900px) {
   .creator-page {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
     align-items: center;
     justify-items: center;
+    overflow: auto;
+    height: auto;
+    min-height: 100%;
+  }
+
+  .creator-form {
+    width: 100%;
+  }
+
+  .creator-right {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -26,6 +50,8 @@
   display: flex;
   justify-content: center;
   padding: 0 0.5rem;
+  min-height: 0;
+  overflow: auto;
 }
 
 .creator-card {
@@ -39,14 +65,14 @@
 }
 
 .creator-preview {
-  position: sticky;
-  top: 1.5rem;
   background: #fff;
   border: 1px solid #e8e8e8;
   border-radius: 24px;
   padding: 1.5rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-  min-height: 420px;
+  min-height: 380px;
+  max-width: 380px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

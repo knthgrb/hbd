@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="app-footer">
-      made with love by konkon {"<3"}
+      made <s>with love</s> for fun by konkon {"<3"}
     </footer>
   );
 }

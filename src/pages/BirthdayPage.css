@@ -357,6 +357,12 @@
   color: #666;
 }
 
+@media (max-width: 768px) {
+  .birthday-back-link {
+    margin-bottom: 1rem;
+  }
+}
+
 .birthday-back-link:hover {
   color: #c77dff;
 }

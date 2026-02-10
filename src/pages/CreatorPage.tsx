@@ -139,18 +139,19 @@ export default function CreatorPage() {
         </div>
       </div>
 
-      <div className="creator-preview">
-        <p className="creator-preview-title">Preview</p>
-        <CakePreview
-          name={name}
-          month={month}
-          day={day}
-          layers={layers}
-          theme={theme}
-        />
+      <div className="creator-right">
+        <div className="creator-preview">
+          <p className="creator-preview-title">Preview</p>
+          <CakePreview
+            name={name}
+            month={month}
+            day={day}
+            layers={layers}
+            theme={theme}
+          />
+        </div>
+        <Footer />
       </div>
-
-      <Footer />
     </div>
   );
 }
