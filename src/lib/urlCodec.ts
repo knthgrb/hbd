@@ -43,5 +43,6 @@ export function decodeBirthdayUrl(): BirthdayData | null {
 
 /** Check if current route is the birthday card view. */
 export function isBirthdayRoute(): boolean {
-  return window.location.pathname === `/${PREFIX}`;
+  const p = window.location.pathname;
+  return p === `/${PREFIX}` || p.endsWith(`/${PREFIX}`) || p.endsWith(`/${PREFIX}/`);
 }

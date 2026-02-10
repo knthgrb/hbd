@@ -27,6 +27,7 @@ export default function CreatorPage() {
   const [link, setLink] = useState("");
 
   const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
+  const basePath = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "") || "";
 
   const generateLink = () => {
     const created = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
@@ -39,7 +40,7 @@ export default function CreatorPage() {
       theme,
     };
     const path = encodeBirthdayUrl(data, baseUrl);
-    setLink(`${baseUrl}${path}`);
+    setLink(`${baseUrl}${basePath}${path}`);
   };
 
   const copyLink = async () => {
