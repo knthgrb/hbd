@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/hbd">
       <div className="app-wrap">
         <main className="app-main">
           <Routes>
