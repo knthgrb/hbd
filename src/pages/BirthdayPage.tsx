@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useBlowDetection } from "../hooks/useBlowDetection";
 import { isBlownToday, setBlownToday } from "../lib/blownStorage";
 import { getCountdown } from "../lib/countdown";
@@ -70,35 +70,42 @@ export default function BirthdayPage() {
       ? `birthday-page--${data.theme}`
       : "";
 
+  const blowTexts = useMemo(
+    () => [
+      { text: "blow", left: 8, top: 12, rot: -12 },
+      { text: "blow", left: 88, top: 18, rot: 8 },
+      { text: "blow", left: 15, top: 45, rot: 5 },
+      { text: "blow", left: 82, top: 38, rot: -18 },
+      { text: "blow", left: 72, top: 72, rot: 3 },
+      { text: "blow", left: 22, top: 78, rot: -8 },
+      { text: "blow", left: 92, top: 55, rot: 14 },
+      { text: "blow", left: 5, top: 62, rot: -5 },
+      { text: "blow", left: 78, top: 88, rot: 10 },
+      { text: "blow", left: 45, top: 25, rot: -3 },
+      { text: "blow", left: 55, top: 82, rot: 7 },
+    ],
+    [],
+  );
+
   return (
     <div className={`birthday-page ${themeClass}`.trim()}>
+      <div className="blow-texts-layer" aria-hidden>
+        {blowTexts.map((item, i) => (
+          <span
+            key={i}
+            className="cake-blow-text"
+            style={{
+              left: `${item.left}%`,
+              top: `${item.top}%`,
+              transform: `translate(-50%, -50%) rotate(${item.rot}deg)`,
+            }}
+          >
+            {item.text}
+          </span>
+        ))}
+      </div>
       {(data.theme === "cat" || data.theme === "junk") && (
         <ThemeCollage theme={data.theme} />
-      )}
-      {data.created != null && milestones.length > 0 && (
-        <div className="birthday-milestones">
-          <div className="birthday-milestones-list">
-            {milestones.map((m) => (
-              <span
-                key={m.id}
-                className={`birthday-milestone ${m.unlocked ? "unlocked" : "locked"} ${m.isGift ? "gift" : ""}`}
-                title={
-                  m.isGift
-                    ? m.unlocked
-                      ? "Gift unlocked!"
-                      : "Blow the candle to unlock"
-                    : m.label
-                }
-              >
-                {m.isGift
-                  ? m.unlocked
-                    ? "✓ 🎁 Gift"
-                    : "○ 🎁 Gift"
-                  : (m.unlocked ? "✓ " : "○ ") + m.label}
-              </span>
-            ))}
-          </div>
-        </div>
       )}
 
       <div className="birthday-countdown">
@@ -143,33 +150,38 @@ export default function BirthdayPage() {
       </div>
 
       <div className="cake-container">
-        <div className="cake">
-          {layers.map((color, i) => (
-            <div
-              key={i}
-              className="cake-layer"
-              style={{
-                backgroundColor: color,
-                boxShadow: `inset 0 -8px 0 rgba(0,0,0,0.1), 0 6px 0 rgba(0,0,0,0.08)`,
-              }}
-            />
-          ))}
-          <div className="candle-wrap">
-            <div className="candle" />
-            {!blownOut ? (
-              <div className="flame-wrap">
-                <div className="flame" />
-              </div>
-            ) : (
-              <div className="smoke-wrap">
-                <div className="smoke s1" />
-                <div className="smoke s2" />
-                <div className="smoke s3" />
-              </div>
-            )}
+        <div className="cake-wrapper">
+          <div className="cake">
+            {layers.map((color, i) => (
+              <div
+                key={i}
+                className="cake-layer"
+                style={{
+                  backgroundColor: color,
+                  boxShadow: `inset 0 -8px 0 rgba(0,0,0,0.1), 0 6px 0 rgba(0,0,0,0.08)`,
+                }}
+              />
+            ))}
+            <div className="candle-wrap">
+              <div className="candle" />
+              {!blownOut ? (
+                <div className="flame-wrap">
+                  <div className="flame" />
+                </div>
+              ) : (
+                <div className="smoke-wrap">
+                  <div className="smoke s1" />
+                  <div className="smoke s2" />
+                  <div className="smoke s3" />
+                </div>
+              )}
+            </div>
           </div>
+          <div className="cake-plate" />
         </div>
-        <div className="cake-plate" />
+        <p className="cake-label">
+          {nameForCake ? `cheesecake ni ${nameForCake}` : "cheesecake ni siya"}
+        </p>
       </div>
 
       {!blownOut && (

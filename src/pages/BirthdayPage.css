@@ -171,6 +171,59 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: visible;
+}
+
+.cake-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blow-texts-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cake-blow-text {
+  position: absolute;
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.07);
+  white-space: nowrap;
+  font-style: italic;
+}
+
+.cake-label {
+  position: absolute;
+  left: calc(100% + 0.75rem);
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid #e8e8e8;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  color: #555;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  z-index: 2;
+}
+
+.cake-label::after {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 8px solid transparent;
+  border-right-color: #fff;
+  filter: drop-shadow(-1px 0 0 #e8e8e8);
 }
 
 .cake-plate {
@@ -179,7 +232,9 @@
   margin: -2px auto 0;
   background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 100%);
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   position: relative;
   z-index: 0;
 }
@@ -211,7 +266,9 @@
   padding: 0.6rem 1rem 2rem;
   background: linear-gradient(180deg, #fffef8 0%, #faf8f0 100%);
   border-radius: 14px 14px 0 0;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 1);
+  box-shadow:
+    0 -2px 8px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -243,10 +300,18 @@
 .candle {
   width: 14px;
   height: 36px;
-  background: linear-gradient(90deg, #fff8f0 0%, #ffe4cc 30%, #ffd4a8 70%, #ffc489 100%);
+  background: linear-gradient(
+    90deg,
+    #fff8f0 0%,
+    #ffe4cc 30%,
+    #ffd4a8 70%,
+    #ffc489 100%
+  );
   border-radius: 2px;
   margin: 0 auto;
-  box-shadow: inset 0 0 0 1px rgba(255, 200, 150, 0.5), 0 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 200, 150, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .flame-wrap {
@@ -266,14 +331,24 @@
   transform: translate(-50%, -50%);
   width: 16px;
   height: 24px;
-  background: radial-gradient(ellipse at 50% 100%, #ffdd00 0%, #ff9500 40%, #ff6b00 70%, transparent 100%);
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    #ffdd00 0%,
+    #ff9500 40%,
+    #ff6b00 70%,
+    transparent 100%
+  );
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   animation: flicker 0.15s ease-in-out infinite alternate;
 }
 
 @keyframes flicker {
-  from { transform: translate(-50%, -50%) scale(1); }
-  to { transform: translate(-50%, -50%) scale(1.05) translateX(1px); }
+  from {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1.05) translateX(1px);
+  }
 }
 
 .smoke-wrap {
@@ -295,9 +370,22 @@
   animation: smoke-up 1.2s ease-out forwards;
 }
 
-.smoke.s1 { left: 50%; top: 0; transform: translateX(-50%); animation-delay: 0s; }
-.smoke.s2 { left: 40%; top: 4px; animation-delay: 0.15s; }
-.smoke.s3 { left: 60%; top: 4px; animation-delay: 0.3s; }
+.smoke.s1 {
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  animation-delay: 0s;
+}
+.smoke.s2 {
+  left: 40%;
+  top: 4px;
+  animation-delay: 0.15s;
+}
+.smoke.s3 {
+  left: 60%;
+  top: 4px;
+  animation-delay: 0.3s;
+}
 
 @keyframes smoke-up {
   from {
@@ -324,7 +412,9 @@
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
 }
 
 .blow-btn:hover {
