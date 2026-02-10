@@ -89,6 +89,30 @@
   font-weight: 600;
   color: #333;
   font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.birthdate-picker-year-select {
+  font: inherit;
+  font-weight: 600;
+  color: #333;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 0.25rem 0.4rem;
+  cursor: pointer;
+}
+
+.birthdate-picker-year-select:hover {
+  background: #eee;
+}
+
+.birthdate-picker-year-select:focus {
+  outline: none;
+  border-color: #c77dff;
+  box-shadow: 0 0 0 2px rgba(199, 125, 255, 0.2);
 }
 
 .birthdate-picker-weekdays {
