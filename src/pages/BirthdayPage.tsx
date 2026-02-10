@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useBlowDetection } from "../hooks/useBlowDetection";
 import { isBlownToday, setBlownToday } from "../lib/blownStorage";
 import { getCountdown } from "../lib/countdown";
-import { getMilestones } from "../lib/milestones";
 import { decodeBirthdayUrl } from "../lib/urlCodec";
 import ThemeCollage from "../components/ThemeCollage";
 import Footer from "../components/Footer";
@@ -57,13 +56,6 @@ export default function BirthdayPage() {
   const cd = countdown!;
   const isToday = cd.isToday && cd.days === 0 && cd.hours < 24;
   const layers = data.layers.slice(0, CAKE_LAYERS);
-  const milestones = getMilestones(
-    data.created,
-    data.month,
-    data.day,
-    cd.days,
-    blownOut,
-  );
 
   const themeClass =
     data.theme && data.theme !== "default"
@@ -179,9 +171,7 @@ export default function BirthdayPage() {
           </div>
           <div className="cake-plate" />
         </div>
-        <p className="cake-label">
-          {nameForCake ? `cheesecake ni ${nameForCake}` : "cheesecake ni siya"}
-        </p>
+        <p className="cake-label">cheesecake ni</p>
       </div>
 
       {!blownOut && (
@@ -216,7 +206,7 @@ export default function BirthdayPage() {
         </>
       )}
 
-      <a href="/" className="birthday-back-link">
+      <a href="/hbd" className="birthday-back-link">
         Create your own birthday link
       </a>
 
