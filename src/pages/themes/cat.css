@@ -1,0 +1,82 @@
+/* Cat theme – cute, cozy, soft pastels */
+
+.birthday-page--cat {
+  background: linear-gradient(180deg, #fff5f8 0%, #ffe8f0 50%, #fce4ec 100%);
+}
+
+.birthday-page--cat .birthday-milestones-title,
+.birthday-page--cat .birthday-date,
+.birthday-page--cat .birthday-countdown-label,
+.birthday-page--cat .blow-hint,
+.birthday-page--cat .birthday-back-link,
+.birthday-page--cat .app-footer {
+  color: #8d6b7a;
+}
+
+.birthday-page--cat .birthday-countdown-title,
+.birthday-page--cat .birthday-countdown-value {
+  color: #5d4e56;
+}
+
+.birthday-page--cat .birthday-countdown-item {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: #e8c4d0;
+}
+
+.birthday-page--cat .birthday-milestone.unlocked {
+  background: #ffe0eb;
+  color: #9d5c6e;
+}
+
+.birthday-page--cat .birthday-milestone.gift.unlocked {
+  background: #fff0e8;
+  color: #c77d54;
+}
+
+.birthday-page--cat .cake-plate {
+  background: linear-gradient(180deg, #fff8f5 0%, #f5e6e0 100%);
+  box-shadow: 0 4px 12px rgba(139, 107, 122, 0.15);
+}
+
+.birthday-page--cat .cake-top {
+  background: linear-gradient(180deg, #fffefc 0%, #fff5f2 100%);
+  box-shadow: 0 -2px 8px rgba(139, 107, 122, 0.08);
+}
+
+.birthday-page--cat .cake-name {
+  color: #5d4e56;
+}
+
+.birthday-page--cat .blow-btn {
+  background: linear-gradient(135deg, #e8a0b8 0%, #d4849e 100%);
+  color: #fff;
+}
+
+.birthday-page--cat .blow-btn:hover {
+  box-shadow: 0 6px 20px rgba(232, 160, 184, 0.4);
+}
+
+.birthday-page--cat .birthday-wish {
+  color: #7d5a6a;
+}
+
+.birthday-page--cat .birthday-gift-msg {
+  color: #8d6b7a;
+}
+
+/* Theme image – cute cat */
+.birthday-page--cat .theme-image--cat img {
+  border-radius: 50%;
+  border: 3px solid #e8c4d0;
+  max-width: 120px;
+  max-height: 120px;
+}
+
+/* Decorative paw (CSS only) */
+.birthday-page--cat .birthday-countdown::before {
+  content: "🐾";
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.6;
+}

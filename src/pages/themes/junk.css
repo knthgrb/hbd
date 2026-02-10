@@ -1,0 +1,114 @@
+/* Junk journal theme – kraft paper, tape, scrapbook feel */
+
+.birthday-page--junk {
+  background: #e8dfd0;
+  background-image:
+    linear-gradient(rgba(139, 119, 101, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 119, 101, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.birthday-page--junk .birthday-milestones-title,
+.birthday-page--junk .birthday-date,
+.birthday-page--junk .birthday-countdown-label,
+.birthday-page--junk .blow-hint,
+.birthday-page--junk .birthday-gift-msg,
+.birthday-page--junk .birthday-back-link,
+.birthday-page--junk .app-footer {
+  color: #5c4f42;
+}
+
+.birthday-page--junk .birthday-countdown-title,
+.birthday-page--junk .birthday-countdown-value {
+  color: #3d352c;
+  font-family: "Open Sans", "Georgia", serif;
+}
+
+.birthday-page--junk .birthday-countdown-item {
+  background: #f5f0e8;
+  border: 1px solid #c4b8a8;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.birthday-page--junk .birthday-milestone {
+  background: #d4c8b8;
+  color: #5c4f42;
+  border: 1px solid #b8a898;
+}
+
+.birthday-page--junk .birthday-milestone.unlocked {
+  background: #c4b8a8;
+  color: #3d352c;
+}
+
+.birthday-page--junk .birthday-milestone.gift.unlocked {
+  background: #b8a898;
+  color: #2d2620;
+}
+
+.birthday-page--junk .cake-plate {
+  background: linear-gradient(180deg, #f0e8e0 0%, #d8cfc4 100%);
+  box-shadow: 0 4px 12px rgba(60, 53, 44, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.birthday-page--junk .cake-top {
+  background: linear-gradient(180deg, #faf6f0 0%, #ede6dc 100%);
+  border: 1px solid #c4b8a8;
+  box-shadow: 0 -2px 8px rgba(60, 53, 44, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.birthday-page--junk .cake-name {
+  color: #3d352c;
+  font-family: "Open Sans", "Georgia", serif;
+}
+
+.birthday-page--junk .blow-btn {
+  background: #8b7765;
+  color: #f5f0e8;
+  border: 2px solid #5c4f42;
+}
+
+.birthday-page--junk .blow-btn:hover {
+  background: #7a6a5a;
+  box-shadow: 0 4px 12px rgba(60, 53, 44, 0.25);
+}
+
+.birthday-page--junk .birthday-wish {
+  color: #3d352c;
+  font-family: "Open Sans", "Georgia", serif;
+}
+
+/* Theme image – paper/notebook */
+.birthday-page--junk .theme-image--junk img {
+  border-radius: 4px;
+  border: 2px solid #c4b8a8;
+  max-width: 140px;
+  max-height: 90px;
+  box-shadow: 2px 2px 6px rgba(60, 53, 44, 0.2);
+}
+
+/* Washi-tape style accent */
+.birthday-page--junk .birthday-countdown {
+  position: relative;
+  padding-top: 0.5rem;
+}
+
+.birthday-page--junk .birthday-countdown::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 200px;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 4px,
+    rgba(139, 119, 101, 0.3) 4px,
+    rgba(139, 119, 101, 0.3) 6px
+  );
+  border-radius: 2px;
+  opacity: 0.8;
+}

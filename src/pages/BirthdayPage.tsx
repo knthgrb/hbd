@@ -1,0 +1,214 @@
+import { useCallback, useEffect, useState } from "react";
+import { useBlowDetection } from "../hooks/useBlowDetection";
+import { isBlownToday, setBlownToday } from "../lib/blownStorage";
+import { getCountdown } from "../lib/countdown";
+import { getMilestones } from "../lib/milestones";
+import { decodeBirthdayUrl } from "../lib/urlCodec";
+import ThemeCollage from "../components/ThemeCollage";
+import Footer from "../components/Footer";
+import { CAKE_LAYERS, MONTH_NAMES } from "../types";
+import "./BirthdayPage.css";
+import "./themes/cat.css";
+import "./themes/junk.css";
+
+export default function BirthdayPage() {
+  const [data] = useState(() => decodeBirthdayUrl());
+  const [countdown, setCountdown] = useState(() =>
+    data ? getCountdown(data.month, data.day) : null,
+  );
+  const [blownOut, setBlownOut] = useState(() => {
+    if (!data) return false;
+    return isBlownToday(data.name, data.month, data.day);
+  });
+
+  const onBlow = useCallback(() => {
+    if (!data) return;
+    setBlownOut(true);
+    setBlownToday(data.name, data.month, data.day);
+  }, [data]);
+
+  const { start, stop, error, listening } = useBlowDetection(onBlow);
+
+  useEffect(() => {
+    if (!data) return;
+    const t = setInterval(() => {
+      setCountdown(getCountdown(data.month, data.day));
+    }, 1000);
+    return () => clearInterval(t);
+  }, [data]);
+
+  useEffect(() => {
+    if (blownOut) stop();
+  }, [blownOut, stop]);
+
+  if (!data) {
+    return (
+      <div className="birthday-page birthday-page--error">
+        <p>Invalid or missing birthday link.</p>
+        <a href="/">Create your own link</a>
+        <Footer />
+      </div>
+    );
+  }
+
+  const nameRaw = data.name.trim();
+  const name = nameRaw ? `${nameRaw}'s` : "";
+  const nameForCake = nameRaw || "";
+  const cd = countdown!;
+  const isToday = cd.isToday && cd.days === 0 && cd.hours < 24;
+  const layers = data.layers.slice(0, CAKE_LAYERS);
+  const milestones = getMilestones(
+    data.created,
+    data.month,
+    data.day,
+    cd.days,
+    blownOut,
+  );
+
+  const themeClass =
+    data.theme && data.theme !== "default"
+      ? `birthday-page--${data.theme}`
+      : "";
+
+  return (
+    <div className={`birthday-page ${themeClass}`.trim()}>
+      {(data.theme === "cat" || data.theme === "junk") && (
+        <ThemeCollage theme={data.theme} />
+      )}
+      {data.created != null && milestones.length > 0 && (
+        <div className="birthday-milestones">
+          <div className="birthday-milestones-list">
+            {milestones.map((m) => (
+              <span
+                key={m.id}
+                className={`birthday-milestone ${m.unlocked ? "unlocked" : "locked"} ${m.isGift ? "gift" : ""}`}
+                title={
+                  m.isGift
+                    ? m.unlocked
+                      ? "Gift unlocked!"
+                      : "Blow the candle to unlock"
+                    : m.label
+                }
+              >
+                {m.isGift
+                  ? m.unlocked
+                    ? "✓ 🎁 Gift"
+                    : "○ 🎁 Gift"
+                  : (m.unlocked ? "✓ " : "○ ") + m.label}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="birthday-countdown">
+        {isToday ? (
+          <h2 className="birthday-countdown-title">
+            🎉 It's {name || "birthday"} today!
+          </h2>
+        ) : (
+          <>
+            <h2 className="birthday-countdown-title">
+              Countdown to {name ? `${name} ` : ""}birthday
+            </h2>
+            <p className="birthday-date">
+              {MONTH_NAMES[data.month - 1]} {data.day}
+            </p>
+            <div className="birthday-countdown-grid">
+              <div className="birthday-countdown-item">
+                <span className="birthday-countdown-value">{cd.days}</span>
+                <span className="birthday-countdown-label">Days</span>
+              </div>
+              <div className="birthday-countdown-item">
+                <span className="birthday-countdown-value">
+                  {String(cd.hours).padStart(2, "0")}
+                </span>
+                <span className="birthday-countdown-label">Hours</span>
+              </div>
+              <div className="birthday-countdown-item">
+                <span className="birthday-countdown-value">
+                  {String(cd.minutes).padStart(2, "0")}
+                </span>
+                <span className="birthday-countdown-label">Min</span>
+              </div>
+              <div className="birthday-countdown-item">
+                <span className="birthday-countdown-value">
+                  {String(cd.seconds).padStart(2, "0")}
+                </span>
+                <span className="birthday-countdown-label">Sec</span>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+
+      <div className="cake-container">
+        <div className="cake">
+          {layers.map((color, i) => (
+            <div
+              key={i}
+              className="cake-layer"
+              style={{
+                backgroundColor: color,
+                boxShadow: `inset 0 -8px 0 rgba(0,0,0,0.1), 0 6px 0 rgba(0,0,0,0.08)`,
+              }}
+            />
+          ))}
+          <div className="candle-wrap">
+            <div className="candle" />
+            {!blownOut ? (
+              <div className="flame-wrap">
+                <div className="flame" />
+              </div>
+            ) : (
+              <div className="smoke-wrap">
+                <div className="smoke s1" />
+                <div className="smoke s2" />
+                <div className="smoke s3" />
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="cake-plate" />
+      </div>
+
+      {!blownOut && (
+        <div className="blow-section">
+          {!listening ? (
+            <button type="button" className="blow-btn" onClick={start}>
+              🕯️ Blow out the candle
+            </button>
+          ) : (
+            <p className="blow-hint">
+              Blow into your phone or laptop microphone to blow out the candle!
+            </p>
+          )}
+          {error && <p className="blow-error">{error}</p>}
+        </div>
+      )}
+
+      {blownOut && (
+        <>
+          {isToday ? (
+            <>
+              <p className="birthday-wish">
+                Happy Birthday{nameForCake ? `, ${nameForCake}` : ""}! 🎂✨
+              </p>
+              <p className="birthday-gift-msg">
+                You unlocked the gift! 🎁 (Candle resets tomorrow.)
+              </p>
+            </>
+          ) : (
+            <p className="birthday-wish">Yey! 🎉</p>
+          )}
+        </>
+      )}
+
+      <a href="/" className="birthday-back-link">
+        Create your own birthday link
+      </a>
+
+      <Footer />
+    </div>
+  );
+}

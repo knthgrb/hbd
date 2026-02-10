@@ -1,0 +1,145 @@
+.birthdate-picker {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.birthdate-picker-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.birthdate-picker-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
+  text-align: left;
+}
+
+.birthdate-picker-input:hover {
+  border-color: #c77dff;
+}
+
+.birthdate-picker-input:focus {
+  outline: none;
+  border-color: #c77dff;
+  box-shadow: 0 0 0 3px rgba(199, 125, 255, 0.2);
+}
+
+.birthdate-picker-icon {
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+.birthdate-picker-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  padding: 1rem;
+  z-index: 100;
+}
+
+.birthdate-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.birthdate-picker-nav {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  color: #333;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.birthdate-picker-nav:hover {
+  background: #eee;
+  color: #c77dff;
+}
+
+.birthdate-picker-month-year {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.birthdate-picker-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 6px;
+}
+
+.birthdate-picker-weekday {
+  font-size: 0.7rem;
+  color: #666;
+  text-align: center;
+  font-weight: 600;
+}
+
+.birthdate-picker-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.birthdate-picker-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+}
+
+.birthdate-picker-day:hover:not(.birthdate-picker-day--blank) {
+  background: #f0f0f0;
+}
+
+.birthdate-picker-day--selected {
+  background: #c77dff;
+  color: #fff;
+  font-weight: 600;
+}
+
+.birthdate-picker-day--selected:hover {
+  background: #b36beb;
+}
+
+.birthdate-picker-day--blank {
+  cursor: default;
+  pointer-events: none;
+}

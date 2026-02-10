@@ -1,0 +1,44 @@
+.theme-collage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.theme-collage-item {
+  position: absolute;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.theme-collage-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+
+/* Cat theme collage */
+.theme-collage--cat .theme-collage-item {
+  border: 2px solid rgba(232, 196, 208, 0.8);
+  border-radius: 50%;
+}
+
+.theme-collage--cat .theme-collage-item img {
+  aspect-ratio: 1;
+}
+
+/* Junk theme collage */
+.theme-collage--junk .theme-collage-item {
+  border: 1px solid rgba(196, 184, 168, 0.9);
+  border-radius: 2px;
+  box-shadow: 1px 2px 8px rgba(60, 53, 44, 0.15);
+}
+
+/* Compact (preview) */
+.theme-collage--compact .theme-collage-item {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,346 @@
+.creator-page {
+  min-height: 100%;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.creator-page .app-footer {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 900px) {
+  .creator-page {
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+  }
+}
+
+.creator-form {
+  display: flex;
+  justify-content: center;
+  padding: 0 0.5rem;
+}
+
+.creator-card {
+  max-width: 420px;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.creator-preview {
+  position: sticky;
+  top: 1.5rem;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.creator-preview-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 1rem;
+}
+
+.creator-preview-inner {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  padding: 1rem 0.5rem 1.5rem;
+  border-radius: 16px;
+  flex: 1;
+}
+
+.creator-preview-inner.birthday-page {
+  min-height: auto;
+  margin: 0;
+}
+
+.creator-preview-inner .birthday-countdown,
+.creator-preview-inner .cake-container,
+.creator-preview-inner .creator-preview-hint {
+  position: relative;
+  z-index: 1;
+}
+
+.creator-preview-inner .birthday-countdown-title {
+  font-size: 1.1rem;
+}
+
+.creator-preview-inner .birthday-date {
+  font-size: 0.9rem;
+}
+
+.creator-preview-inner .birthday-countdown-grid {
+  gap: 0.5rem;
+}
+
+.creator-preview-inner .birthday-countdown-item {
+  padding: 0.4rem 0.6rem;
+  min-width: 52px;
+}
+
+.creator-preview-inner .birthday-countdown-value {
+  font-size: 1.25rem;
+}
+
+.creator-preview-inner .cake-plate {
+  width: 160px;
+  height: 16px;
+}
+
+.creator-preview-inner .cake {
+  width: 130px;
+}
+
+.creator-preview-inner .cake-layer {
+  height: 28px;
+}
+
+.creator-preview-inner .cake-top {
+  width: 150px;
+  padding: 0.5rem 0.75rem 1.25rem;
+}
+
+.creator-preview-inner .cake-name {
+  font-size: 1.1rem;
+}
+
+.creator-preview-inner .candle {
+  height: 26px;
+  width: 12px;
+}
+
+.creator-preview-inner .flame-wrap {
+  top: -26px;
+}
+
+.creator-preview-hint {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin: 1rem 0 0;
+}
+
+.creator-title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.creator-subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 1.75rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.creator-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.creator-input,
+.creator-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.creator-input::placeholder {
+  color: #999;
+}
+
+.creator-input:focus,
+.creator-select:focus {
+  outline: none;
+  border-color: #c77dff;
+  box-shadow: 0 0 0 3px rgba(199, 125, 255, 0.2);
+}
+
+.creator-date-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.creator-date-row .creator-select {
+  flex: 2;
+  margin-bottom: 0;
+}
+
+.creator-themes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.creator-theme-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  background: #fff;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.creator-theme-btn:hover {
+  border-color: #c77dff;
+  background: #faf8ff;
+}
+
+.creator-theme-btn.active {
+  border-color: #c77dff;
+  background: #f3ebff;
+}
+
+.creator-theme-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.creator-theme-desc {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.15rem;
+}
+
+.creator-colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.creator-color-swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+}
+
+.creator-layer-num {
+  font-size: 0.7rem;
+  color: #666;
+}
+
+.creator-color-input {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+}
+
+.creator-color-input::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+
+.creator-color-input::-webkit-color-swatch {
+  border: 2px solid #ddd;
+  border-radius: 50%;
+}
+
+.creator-btn {
+  padding: 0.85rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  font-family: "Open Sans", sans-serif;
+}
+
+.creator-btn:active {
+  transform: scale(0.98);
+}
+
+.creator-btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, #c77dff 0%, #e8a0bf 100%);
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.creator-btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(199, 125, 255, 0.35);
+}
+
+.creator-link-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.creator-link-input {
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  color: #333;
+  font-size: 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.creator-btn-copy {
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #e0e0e0;
+}
+
+.creator-btn-copy:hover {
+  background: #e8e8e8;
+}
+
+.creator-btn-copy.copied {
+  background: #2e7d32;
+  border-color: #2e7d32;
+  color: #fff;
+}
