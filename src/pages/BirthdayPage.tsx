@@ -178,11 +178,11 @@ export default function BirthdayPage() {
         <div className="blow-section">
           {!listening ? (
             <button type="button" className="blow-btn" onClick={start}>
-              🕯️ Blow out the candle
+              Blow
             </button>
           ) : (
             <p className="blow-hint">
-              Blow into your phone or laptop microphone to blow out the candle!
+              Blow into your phone or laptop microphone!
             </p>
           )}
           {error && <p className="blow-error">{error}</p>}

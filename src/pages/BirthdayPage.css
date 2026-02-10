@@ -209,7 +209,7 @@
   background: #fff;
   border: 2px solid #e8e8e8;
   border-radius: 999px;
-  font-size: clamp(0.7rem, 2vw + 0.5rem, 0.95rem);
+  font-size: clamp(0.3rem, 2vw + 0.5rem, 0.95rem);
   color: #555;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   z-index: 2;
