@@ -11,6 +11,13 @@
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .birthday-page {
+    padding: 1rem 0.75rem 2rem;
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+  }
+}
+
 .birthday-page > .birthday-milestones,
 .birthday-page > .birthday-countdown,
 .birthday-page > .cake-container,
